@@ -1,0 +1,28 @@
+body{
+    background-color: rgb(223, 224, 224);
+    font-family: Arial, Helvetica, sans-serif;
+}
+/*Header*/
+#NavLink{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#NavLink:hover{
+    transform: scale(1.2);
+      transition: transform 0.3s ease;
+      filter: drop-shadow(2px 2px 2px #b9b7b7);
+}
+
+#iconosFooter{
+    width: 25px;
+    height: 25px;
+    margin-top: 8px;
+}
+
+#iconosFooter:hover{
+    border-radius: 0px;
+      transform: scale(1.2);
+      vertical-align: middle;
+      transition: transform 0.3s ease;
+      filter: drop-shadow(2px 2px 2px #000);
+}
