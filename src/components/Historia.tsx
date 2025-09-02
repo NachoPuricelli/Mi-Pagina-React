@@ -7,7 +7,7 @@ import Col from "react-bootstrap/Col";
 function Historia() {
   return (
     <>
-    <Container fluid className="py-5 bg-light">
+    <Container fluid className="py-5 bg-dark-subtle">
       <Container>
         <Row className="align-items-center g-4">
           <Col lg={6} md={12}>
@@ -44,7 +44,7 @@ function Historia() {
       </Container>
     </Container>
     <hr />
-    <Container fluid className="py-5 bg-light">
+    <Container fluid className="py-5 bg-dark-subtle">
       <Container>
         <Row className="align-items-center g-4">
           

@@ -6,7 +6,7 @@ import { Nav } from 'react-bootstrap'
 const Header = () => {
   return (
     <>
-    <Navbar expand="lg" className="bg-light shadow-lg">
+    <Navbar expand="lg" className="bg-dark-subtle shadow-lg">
       <Container>
         <Navbar.Brand href="#Inico" className="fw-bold text-primary">Nombre de tu Empresa</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
