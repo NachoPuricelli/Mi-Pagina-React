@@ -1,4 +1,5 @@
 import { PhoneIcon, MapPinIcon, MailIcon, ClockIcon } from "lucide-react";
+import { useState } from "react";
 import { Card, Container, Row, Col, Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 
@@ -238,7 +239,7 @@ function Contacto() {
                     <Button 
                       variant="primary" 
                       size="lg" 
-                      className="flex-grow-1 d-flex align-items-center justify-content-center"
+                      className="flex-grow-1 d-flex align-items-center justify-content-center botonHover"
                       style={{
                         background: 'linear-gradient(135deg, #2563eb, #1e40af)',
                         border: 'none',
@@ -251,7 +252,7 @@ function Contacto() {
                       Enviar Mensaje
                     </Button>
                     
-                    <Button 
+                    <Button className="botonHover"
                       variant="outline-secondary" 
                       size="lg"
                       style={{
@@ -325,6 +326,19 @@ function Contacto() {
       </Container>
     </>
   );
+  const [formData, setFormData] = useState({
+    nombre: "",
+    mail: "",
+    codarea: "",
+    celular: "",
+    asunto: "",
+    mensaje: "",
+  });
+
+  const[loading, setLoading] = useState(false);
+  const[mensaje, setMensaje] = useState("");
+
+  
 }
 
 export default Contacto;

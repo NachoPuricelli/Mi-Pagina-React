@@ -10,15 +10,14 @@ body{
 #NavLink:hover{
     transform: translateY(-4px);
       transition: transform 0.3s ease;
-           
 }
 
-.botonGen:hover{
+.botonHover:hover{
     transform: translateY(-4px);
     transition: transform 0.3s ease;
     box-shadow: 2px 2px 8px black;
-
 }
+
 
 #iconosFooter{
     width: 25px;

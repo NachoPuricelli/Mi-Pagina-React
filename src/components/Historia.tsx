@@ -12,7 +12,7 @@ function Historia() {
         <Row className="align-items-center g-4">
           <Col lg={6} md={12}>
             <img
-              src="https://www.xtrafondos.com/thumbs/webp/1_9082.webp"
+              src="https://www-gstatic-com.translate.goog/webp/gallery/4.webp?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc"
               alt="Descripción de la imagen"
               className="img-fluid rounded shadow-lg"
               style={{
@@ -34,7 +34,7 @@ function Historia() {
                   imagen. Cada detalle cuenta una historia única que ha marcado
                   nuestro camino hacia la excelencia y la innovación.
                 </Card.Text>
-                <Button variant="primary" size="lg" className="px-4 botonGen">
+                <Button variant="primary" size="lg" className="px-4 botonHover">
                   Leer más
                 </Button>
               </Card.Body>
@@ -56,7 +56,7 @@ function Historia() {
                 <Card.Text className="fs-5 text-muted mb-4">
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum ut illum nam maxime corporis eius natus est a voluptatem pariatur dolor autem porro nostrum, cupiditate dolorem, nemo nisi ab eaque.
                 </Card.Text>
-                <Button variant="primary" size="lg" className="px-4 botonGen">
+                <Button variant="primary" size="lg" className="px-4 botonHover">
                   Leer más
                 </Button>
               </Card.Body>
