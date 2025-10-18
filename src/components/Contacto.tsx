@@ -1,9 +1,83 @@
 import { PhoneIcon, MapPinIcon, MailIcon, ClockIcon } from "lucide-react";
 import { useState } from "react";
-import { Card, Container, Row, Col, Button } from "react-bootstrap";
+import { Card, Container, Row, Col, Button, Alert } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 
 function Contacto() {
+  const [formData, setFormData] = useState({
+    nombre: "",
+    email: "",
+    cod_area: "",
+    celular: "",
+    asunto: "",
+    mensaje: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [mensaje, setMensaje] = useState({ tipo: "", texto: "" });
+
+  // Manejar cambios en los inputs
+  const handleChange = (e: { target: { id: any; value: any; }; }) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+
+  // Limpiar formulario
+  const handleLimpiar = () => {
+    setFormData({
+      nombre: "",
+      email: "",
+      cod_area: "",
+      celular: "",
+      asunto: "",
+      mensaje: "",
+    });
+    setMensaje({ tipo: "", texto: "" });
+  };
+
+  // Enviar formulario
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    setLoading(true);
+    setMensaje({ tipo: "", texto: "" });
+
+    try {
+      const response = await fetch('http://localhost:5000/api/contacto', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMensaje({ 
+          tipo: "success", 
+          texto: "✅ ¡Mensaje enviado exitosamente! Nos pondremos en contacto contigo pronto." 
+        });
+        handleLimpiar();
+      } else {
+        setMensaje({ 
+          tipo: "danger", 
+          texto: `❌ Error: ${data.error || 'No se pudo enviar el mensaje'}` 
+        });
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setMensaje({ 
+        tipo: "danger", 
+        texto: "❌ Error de conexión. Por favor, verifica que el servidor esté activo." 
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       {/* Sección Hero de Contacto */}
@@ -118,7 +192,14 @@ function Contacto() {
                   <p className="text-muted">Completa el formulario y nos pondremos en contacto contigo</p>
                 </div>
 
-                <Form>
+                {/* Mensajes de éxito/error */}
+                {mensaje.texto && (
+                  <Alert variant={mensaje.tipo} className="mb-4" dismissible onClose={() => setMensaje({ tipo: "", texto: "" })}>
+                    {mensaje.texto}
+                  </Alert>
+                )}
+
+                <Form onSubmit={handleSubmit}>
                   <Row>
                     <Col md={6}>
                       <Form.Floating className="mb-4">
@@ -126,29 +207,35 @@ function Contacto() {
                           id="nombre"
                           type="text"
                           placeholder="Ingrese su nombre aquí"
+                          value={formData.nombre}
+                          onChange={handleChange}
+                          required
                           style={{
                             borderRadius: '12px',
                             border: '2px solid #e2e8f0',
                             background: 'rgba(255, 255, 255, 0.9)'
                           }}
                         />
-                        <label htmlFor="nombre" className="text-muted">Nombre completo</label>
+                        <label htmlFor="nombre" className="text-muted">Nombre completo *</label>
                       </Form.Floating>
                     </Col>
 
                     <Col md={6}>
                       <Form.Floating className="mb-4">
                         <Form.Control 
-                          id="mail" 
+                          id="email" 
                           type="email" 
                           placeholder="Aquí su email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          required
                           style={{
                             borderRadius: '12px',
                             border: '2px solid #e2e8f0',
                             background: 'rgba(255, 255, 255, 0.9)'
                           }}
                         />
-                        <label htmlFor="mail" className="text-muted">Email</label>
+                        <label htmlFor="email" className="text-muted">Email *</label>
                       </Form.Floating>
                     </Col>
                   </Row>
@@ -157,16 +244,18 @@ function Contacto() {
                     <Col md={4}>
                       <Form.Floating>
                         <Form.Control 
-                          id="codarea" 
+                          id="cod_area" 
                           type="text" 
                           placeholder="011"
+                          value={formData.cod_area}
+                          onChange={handleChange}
                           style={{
                             borderRadius: '12px',
                             border: '2px solid #e2e8f0',
                             background: 'rgba(255, 255, 255, 0.9)'
                           }}
                         />
-                        <label htmlFor="codarea" className="text-muted">Cód. área</label>
+                        <label htmlFor="cod_area" className="text-muted">Cód. área</label>
                       </Form.Floating>
                     </Col>
                     <Col md={8}>
@@ -175,6 +264,8 @@ function Contacto() {
                           id="celular"
                           type="tel"
                           placeholder="Número de celular"
+                          value={formData.celular}
+                          onChange={handleChange}
                           style={{
                             borderRadius: '12px',
                             border: '2px solid #e2e8f0',
@@ -189,6 +280,8 @@ function Contacto() {
                   <Form.Floating className="mb-4">
                     <Form.Select 
                       id="asunto"
+                      value={formData.asunto}
+                      onChange={handleChange}
                       style={{
                         borderRadius: '12px',
                         border: '2px solid #e2e8f0',
@@ -209,6 +302,9 @@ function Contacto() {
                       as="textarea"
                       id="mensaje"
                       placeholder="Escriba su mensaje aquí"
+                      value={formData.mensaje}
+                      onChange={handleChange}
+                      required
                       style={{ 
                         height: "120px",
                         borderRadius: '12px',
@@ -217,28 +313,16 @@ function Contacto() {
                         resize: 'vertical'
                       }}
                     />
-                    <label htmlFor="mensaje" className="text-muted">Mensaje</label>
+                    <label htmlFor="mensaje" className="text-muted">Mensaje *</label>
                   </Form.Floating>
-
-                  {/* Checkbox de términos */}
-                  <div className="mb-4">
-                    <Form.Check
-                      type="checkbox"
-                      id="terminos"
-                      label={
-                        <span className="text-muted">
-                          Acepto los <a href="#" className="text-primary text-decoration-none">términos y condiciones</a> y la <a href="#" className="text-primary text-decoration-none">política de privacidad</a>
-                        </span>
-                      }
-                      className="form-check-custom"
-                    />
-                  </div>
 
                   {/* Botones */}
                   <div className="d-flex gap-3">
                     <Button 
+                      type="submit"
                       variant="primary" 
                       size="lg" 
+                      disabled={loading}
                       className="flex-grow-1 d-flex align-items-center justify-content-center botonHover"
                       style={{
                         background: 'linear-gradient(135deg, #2563eb, #1e40af)',
@@ -249,12 +333,16 @@ function Contacto() {
                       }}
                     >
                       <MailIcon size={20} className="me-2" />
-                      Enviar Mensaje
+                      {loading ? 'Enviando...' : 'Enviar Mensaje'}
                     </Button>
                     
-                    <Button className="botonHover"
+                    <Button 
+                      type="button"
+                      onClick={handleLimpiar}
+                      className="botonHover"
                       variant="outline-secondary" 
                       size="lg"
+                      disabled={loading}
                       style={{
                         borderRadius: '12px',
                         padding: '0.75rem 2rem',
@@ -326,19 +414,6 @@ function Contacto() {
       </Container>
     </>
   );
-  const [formData, setFormData] = useState({
-    nombre: "",
-    mail: "",
-    codarea: "",
-    celular: "",
-    asunto: "",
-    mensaje: "",
-  });
-
-  const[loading, setLoading] = useState(false);
-  const[mensaje, setMensaje] = useState("");
-
-  
 }
 
 export default Contacto;
