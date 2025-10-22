@@ -1,6 +1,5 @@
 import { Container, Navbar } from 'react-bootstrap'
 import { Nav } from 'react-bootstrap'
- import { Link, Element } from 'react-scroll';
 
 const Header = () => {
   return (
@@ -22,14 +21,5 @@ const Header = () => {
     </>
   )
 }
-
-   <><Element name="seccionHistoria">
-  
-</Element><Link to="seccionHistoria" smooth={true} duration={500}>
-   
-  </Link></>
-
-
-
 
 export default Header
