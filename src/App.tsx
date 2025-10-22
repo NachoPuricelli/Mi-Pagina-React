@@ -7,19 +7,6 @@ import Testimonios from './components/Testimonios';
 import Contacto from './components/Contacto';
 import Footer from './components/Footer';
 import Productos from './components/Productos';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { useEffect } from 'react';
-
-useEffect(() => {
-  AOS.init({
-    duration: 1000,
-    once: true,
-    offset: 100,
-    easing: 'ease-in-out'
-  });
-}, []);
-
 
 function App() {
   return (
