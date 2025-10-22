@@ -6,7 +6,8 @@ import { Nav } from 'react-bootstrap'
 const Header = () => {
   return (
     <>
-    <Navbar expand="lg" className="bg-gradient shadow-lg">
+     
+    <Navbar expand="lg" data-bs-spy="scroll" data-bs-target="#seccionHistoria" data-bs-offset="0" className="bg-gradient shadow-lg">
       <Container>
         <Navbar.Brand href="#Inico" className="fw-bolder text-primary NEmpresa">Nombre de tu Empresa</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

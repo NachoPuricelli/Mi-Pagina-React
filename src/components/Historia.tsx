@@ -7,7 +7,7 @@ import Col from "react-bootstrap/Col";
 function Historia() {
   return (
     <>
-    <Container fluid className="py-5 bg-gradient">
+    <Container fluid className="py-5 bg-gradient seccionHistoria">
       <Container>
         <Row className="align-items-center g-4">
           <Col lg={6} md={12}>
