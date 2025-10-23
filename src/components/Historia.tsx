@@ -10,7 +10,7 @@ function Historia() {
     <Container fluid className="py-5 bg-gradient">
       <Container>
         <Row className="align-items-center g-4">
-          <Col lg={6} md={12}>
+          <Col lg={6} md={12} data-aos="fade-right">
             <img
               src="https://www-gstatic-com.translate.goog/webp/gallery/4.webp?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc"
               alt="Descripción de la imagen"
@@ -23,7 +23,7 @@ function Historia() {
             />
           </Col>
 
-          <Col lg={6} md={12}>
+          <Col lg={6} md={12} data-aos="fade-left">
             <Card className="border-0 shadow-sm h-100">
               <Card.Body className="p-4">
                 <Card.Title className="display-6 fw-bold text-primary mb-3">
@@ -47,7 +47,7 @@ function Historia() {
     <Container fluid className="py-5 bg-gradient">
       <Container>
         <Row className="align-items-center g-4">
-          <Col lg={6} md={12}>
+          <Col lg={6} md={12} data-aos="fade-left">
             <Card className="border-0 shadow-sm h-100">
               <Card.Body className="p-4">
                 <Card.Title className="display-6 fw-bold text-primary mb-3">
@@ -63,7 +63,7 @@ function Historia() {
             </Card>
           </Col>
               
-          <Col lg={6} md={12}>
+          <Col lg={6} md={12} data-aos="fade-right">
             <img
               src="https://www.blogdelfotografo.com/wp-content/uploads/2015/10/17449816072_212221c28a_b.jpg"
               alt="Descripción de la imagen"

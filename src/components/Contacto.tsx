@@ -100,7 +100,7 @@ function Contacto() {
       <Container className="py-5">
         <Row className="g-5">
           {/* Información de contacto */}
-          <Col lg={4} md={12}>
+          <Col lg={4} md={12} data-aos="fade-right">
             <div className="h-100">
               <h3 className="fw-bold text-primary mb-4">Información de Contacto</h3>
               
@@ -184,7 +184,7 @@ function Contacto() {
           </Col>
 
           {/* Formulario de contacto */}
-          <Col lg={8} md={12}>
+          <Col lg={8} md={12} data-aos="fade-left">
             <Card className="border-0 shadow-lg glass h-100">
               <Card.Body className="p-5">
                 <div className="text-center mb-4">
