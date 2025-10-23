@@ -28,7 +28,7 @@ function Testimonios() {
   return (
     <>
     <Container className="py-5 bg-opacity-25" data-aos="zoom-in" data-aos-duration="2000">
-      <header className='fw-bold text-center text-primary card mb-2'>Testimonios</header>
+      <header className='fw-bold text-center text-primary card mx-auto mb-2'>Testimonios</header>
       <Row className="justify-content-center text-center g-4">
         <Col xs={6} sm={6} md={3} lg={3}>
           <Image 

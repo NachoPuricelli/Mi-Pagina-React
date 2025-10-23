@@ -4,8 +4,8 @@ import Image from "react-bootstrap/Image";
 function Productos() {
   return (
     <>
-    <header className="fw-bold text-center text-success card" data-aos="zoom-in" data-aos-duration="2000">Nuestros Productos</header>
-      <Carousel fade className="text-center bg-body-terciary shadow-lg mt-4" data-aos="zoom-in" data-aos-duration="2000">
+    <header className="fw-bold text-center text-success card mx-auto w-75" data-aos="zoom-in" data-aos-duration="2000">Nuestros Productos</header>
+      <Carousel fade className="text-center bg-body-terciary shadow-lg mt-4 w-75 mx-auto rounded" data-aos="zoom-in" data-aos-duration="2000">
         <Carousel.Item className="">
           <Image
             src="https://www.xtrafondos.com/thumbs/webp/1_12852.webp"
